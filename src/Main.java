@@ -10,7 +10,7 @@ public class Main {
         String playAgain = "";
         String trash = "";
         boolean validMove = false; // sets validMove to false during initial move
-        boolean validPlayAgain = false; // defaults play again to Falso
+        boolean validPlayAgain = false; // defaults play again to false
         int valueA = 0;
         int valueB = 0;
         int crossProduct = 0;
@@ -19,26 +19,26 @@ public class Main {
             validMove = false;
             // Player A move selection loop
             while (!validMove) {
-                System.out.print("Player A, enter your move ([R]ock, [P]aper, or [S]cissor): ");
+                System.out.print("Player A, enter your move ( [R]ock, [P]aper, or [S]cissor ): ");
                 playerAMove = in.nextLine();
                 if (playerAMove.equalsIgnoreCase("R") || playerAMove.equalsIgnoreCase("P") || playerAMove.equalsIgnoreCase("S")) {
                     validMove = true;
                 } else {
                     trash = playerAMove;
-                    System.out.println("Invalid input: " + trash + ". Please enter [R]ock, [P]aper, or [S]cissor.");
+                    System.out.println("Invalid input: " + trash + ". Please enter ( [R]ock, [P]aper, or [S]cissor )");
                 }
             }
 
             // Player B move selection loop
             validMove = false;
             while (!validMove) {
-                System.out.print("Player B, enter your move ([R]ock, [P]aper, or [S]cissor): ");
+                System.out.print("Player B, enter your move ( [R]ock, [P]aper, or [S]cissor ): ");
                 playerBMove = in.nextLine();
                 if (playerBMove.equalsIgnoreCase("R") || playerBMove.equalsIgnoreCase("P") || playerBMove.equalsIgnoreCase("S")) {
                     validMove = true;
                 } else {
                     trash = playerBMove;
-                    System.out.println("Invalid input: " + trash + ". Please enter [R]ock, [P]aper, or [S]cissor.");
+                    System.out.println("Invalid input: " + trash + ". Please enter ( [R]ock, [P]aper, or [S]cissor )");
                 }
             }
 
@@ -76,20 +76,20 @@ public class Main {
                 System.out.println("Player B wins!");
             }
 
-            // --- Validated Play Again Prompt ---
+            // Ask player if they want to play again, catch invalid input
             validPlayAgain = false;
             while (!validPlayAgain) {
-                System.out.print("Do you want to play again? [Y/N]: ");
+                System.out.print("Do you want to play again? ( [Y]es / [N]no ): ");
                 playAgain = in.nextLine();
 
                 if (playAgain.equalsIgnoreCase("Y") || playAgain.equalsIgnoreCase("N")) {
                     validPlayAgain = true;
                 } else {
                     trash = playAgain;
-                    System.out.println("Invalid input: " + trash + ". Please enter Y or N.");
+                    System.out.println("Invalid input: " + trash + ". Please enter ( [Y]es or [N]o ).");
                 }
             }
-
+            // Loops until player answers Y to play again or N to quit
         } while (playAgain.equalsIgnoreCase("Y"));
     }
 }
