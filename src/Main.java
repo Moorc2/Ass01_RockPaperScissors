@@ -17,6 +17,7 @@ public class Main {
 
         do {
             validMove = false;
+            validPlayAgain = false; // got stuck in a play again loop when the user chose Yes without this line
             // Player A move selection loop
             while (!validMove) {
                 System.out.print("Player A, enter your move ( [R]ock, [P]aper, or [S]cissor ): ");
@@ -77,7 +78,6 @@ public class Main {
             }
 
             // Ask player if they want to play again, catch invalid input
-            validPlayAgain = false;
             while (!validPlayAgain) {
                 System.out.print("Do you want to play again? ( [Y]es / [N]no ): ");
                 playAgain = in.nextLine();
