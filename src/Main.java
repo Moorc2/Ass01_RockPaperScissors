@@ -1,0 +1,95 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        String playerAMove = "";
+        String playerBMove = "";
+        String nameA = "";
+        String nameB = "";
+        String playAgain = "";
+        String trash = "";
+        boolean validMove = false; // sets validMove to false during initial move
+        boolean validPlayAgain = false; // defaults play again to Falso
+        int valueA = 0;
+        int valueB = 0;
+        int crossProduct = 0;
+
+        do {
+            validMove = false;
+            // Player A move selection loop
+            while (!validMove) {
+                System.out.print("Player A, enter your move ([R]ock, [P]aper, or [S]cissor): ");
+                playerAMove = in.nextLine();
+                if (playerAMove.equalsIgnoreCase("R") || playerAMove.equalsIgnoreCase("P") || playerAMove.equalsIgnoreCase("S")) {
+                    validMove = true;
+                } else {
+                    trash = playerAMove;
+                    System.out.println("Invalid input: " + trash + ". Please enter [R]ock, [P]aper, or [S]cissor.");
+                }
+            }
+
+            // Player B move selection loop
+            validMove = false;
+            while (!validMove) {
+                System.out.print("Player B, enter your move ([R]ock, [P]aper, or [S]cissor): ");
+                playerBMove = in.nextLine();
+                if (playerBMove.equalsIgnoreCase("R") || playerBMove.equalsIgnoreCase("P") || playerBMove.equalsIgnoreCase("S")) {
+                    validMove = true;
+                } else {
+                    trash = playerBMove;
+                    System.out.println("Invalid input: " + trash + ". Please enter [R]ock, [P]aper, or [S]cissor.");
+                }
+            }
+
+            // --- Assign Numerical Values and Full Names ---
+            if (playerAMove.equalsIgnoreCase("R")) {
+                valueA = 0; nameA = "Rock";
+            } else if (playerAMove.equalsIgnoreCase("P")) {
+                valueA = 1; nameA = "Paper";
+            } else {
+                valueA = 2; nameA = "Scissors";
+            }
+
+            if (playerBMove.equalsIgnoreCase("R")) {
+                valueB = 0; nameB = "Rock";
+            } else if (playerBMove.equalsIgnoreCase("P")) {
+                valueB = 1; nameB = "Paper";
+            } else {
+                valueB = 2; nameB = "Scissors";
+            }
+
+            // --- Calculate Result ---
+            crossProduct = valueA - valueB;
+
+            if (crossProduct == 0) {
+                System.out.println(nameA + " vs " + nameB + " it is a Tie!");
+            } else if (crossProduct == 1 || crossProduct == -2) {
+                if (playerAMove.equalsIgnoreCase("R")) System.out.println("Rock breaks Scissors");
+                else if (playerAMove.equalsIgnoreCase("P")) System.out.println("Paper covers Rock");
+                else System.out.println("Scissors cuts Paper");
+                System.out.println("Player A wins!");
+            } else {
+                if (playerBMove.equalsIgnoreCase("R")) System.out.println("Rock breaks Scissors");
+                else if (playerBMove.equalsIgnoreCase("P")) System.out.println("Paper covers Rock");
+                else System.out.println("Scissors cuts Paper");
+                System.out.println("Player B wins!");
+            }
+
+            // --- Validated Play Again Prompt ---
+            validPlayAgain = false;
+            while (!validPlayAgain) {
+                System.out.print("Do you want to play again? [Y/N]: ");
+                playAgain = in.nextLine();
+
+                if (playAgain.equalsIgnoreCase("Y") || playAgain.equalsIgnoreCase("N")) {
+                    validPlayAgain = true;
+                } else {
+                    trash = playAgain;
+                    System.out.println("Invalid input: " + trash + ". Please enter Y or N.");
+                }
+            }
+
+        } while (playAgain.equalsIgnoreCase("Y"));
+    }
+}
