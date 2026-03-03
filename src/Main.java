@@ -42,7 +42,7 @@ public class Main {
                 }
             }
 
-            // --- Assign Numerical Values and Full Names ---
+            // assign values to moves
             if (playerAMove.equalsIgnoreCase("R")) {
                 valueA = 0; nameA = "Rock";
             } else if (playerAMove.equalsIgnoreCase("P")) {
@@ -59,7 +59,7 @@ public class Main {
                 valueB = 2; nameB = "Scissors";
             }
 
-            // --- Calculate Result ---
+            // Determine winner
             crossProduct = valueA - valueB;
 
             if (crossProduct == 0) {
